@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7f8fc" />
+  <title>StudySphere — Find your focus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#home" aria-label="StudySphere home"><span class="brand-mark">✦</span><span>study<span class="brand-light">sphere</span></span></a>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav class="nav-list">
+      <button class="nav-item active" data-view="home"><span>▦</span> Overview</button>
+      <button class="nav-item" data-view="rooms"><span>◉</span> Study rooms <span class="nav-count" id="roomNavCount">6</span></button>
+      <button class="nav-item" data-view="focus"><span>◷</span> Focus timer</button>
+      <button class="nav-item" data-view="progress"><span>▥</span> My progress</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="cloud-card"><div class="cloud-icon">☁</div><strong>Your space, anywhere.</strong><p>Your study space follows you across devices when cloud sync is enabled.</p><span class="cloud-status"><i></i><span id="cloudStatus">Local demo mode</span></span></div>
+      <button class="profile-button" id="profileButton"><div class="avatar avatar-purple">S</div><div class="profile-copy"><strong id="profileName">Student</strong><small>Study explorer</small></div><span class="dots">•••</span></button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar"><button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button><div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumbCurrent">Overview</strong></div><div class="top-actions"><div class="today-pill"><span>◷</span><span id="todayDate">Today</span></div><button class="icon-button" id="helpButton" aria-label="Help">?</button><div class="avatar avatar-purple small-avatar">S</div></div></header>
+    <div class="page-wrap">
+      <section class="view active" id="view-home">
+        <div class="welcome-row"><div><div class="eyebrow"><span class="sparkle">✦</span> YOUR PERSONAL STUDY SPACE</div><h1>Make room for <span>great things.</span></h1><p class="subheading">A little progress every day adds up to big results.</p></div><button class="primary-button" id="createRoomTop"><span>＋</span> Create a room</button></div>
+        <div class="hero-banner"><div class="hero-content"><div class="hero-tag"><span class="live-dot"></span> YOUR DAILY RESET</div><h2>Small steps.<br><em>Big focus.</em></h2><p>Show up for yourself today. Your future self will thank you.</p><button class="hero-button" id="startFocusHero">Start a focus session <span>↗</span></button><div class="hero-foot"><span>✦</span> One session at a time</div></div><div class="hero-art" aria-hidden="true"><div class="sun-orb"></div><div class="art-window"><div class="window-top"><i></i><i></i><i></i></div><div class="window-line w1"></div><div class="window-line w2"></div><div class="window-line w3"></div><div class="window-note">✦<br><small>stay curious</small></div></div><div class="art-plant"><div class="leaf l1"></div><div class="leaf l2"></div><div class="leaf l3"></div><div class="plant-pot"></div></div><div class="floating-star fs1">✦</div><div class="floating-star fs2">✧</div><div class="art-book book-one"></div><div class="art-book book-two"></div></div></div>
+        <div class="section-heading stats-heading"><div><h2>Your study snapshot</h2><p>A quick look at how you're doing this week.</p></div><span class="week-label">THIS WEEK <span>⌄</span></span></div>
+        <div class="stats-grid"><article class="stat-card"><div class="stat-top"><span class="stat-icon lavender">◷</span><span class="trend">↗ <b>Keep going</b></span></div><div class="stat-value"><strong id="totalMinutes">0</strong><small>min</small></div><div class="stat-label">Total focus time</div><div class="mini-bars" id="miniBars"><i style="height:25%"></i><i style="height:42%"></i><i style="height:30%"></i><i style="height:65%"></i><i style="height:46%"></i><i style="height:80%"></i><i style="height:35%"></i></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon peach">✓</span><span class="stat-note">Sessions finished</span></div><div class="stat-value"><strong id="sessionCount">0</strong></div><div class="stat-label">Focus sessions</div><div class="stat-footer"><span class="tiny-check">✓</span> Every session counts</div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon mint">♧</span><span class="stat-note">Your daily goal</span></div><div class="stat-value"><strong id="goalPercent">0</strong><small>%</small></div><div class="stat-label">Goal completion</div><div class="progress-track"><span id="goalProgressBar"></span></div><div class="goal-caption"><span id="goalMinutesText">0 of 120 min</span><button id="editGoal">Edit goal</button></div></article>
+        </div>
+        <div class="section-heading room-section-heading"><div><h2>Find your study vibe <span class="heading-spark">✦</span></h2><p>Good company. Quiet minds. Better focus.</p></div><button class="text-button" data-view="rooms">Explore all rooms <span>→</span></button></div>
+        <div class="rooms-grid" id="homeRooms"></div>
+        <div class="bottom-tip"><div class="tip-icon">✧</div><div><strong>A gentle reminder</strong><p>You don't have to do everything today. Just start with one thing.</p></div><span class="tip-flower">✿</span></div>
+      </section>
+
+      <section class="view" id="view-rooms"><div class="page-title-row"><div><div class="eyebrow">FIND YOUR PEOPLE</div><h1>Study rooms</h1><p class="subheading">Pick a room, settle in, and make progress together.</p></div><button class="primary-button" id="createRoomPage">＋ Create a room</button></div><div class="room-toolbar"><label class="search-box"><span>⌕</span><input id="roomSearch" type="search" placeholder="Search subjects or rooms…"></label><select id="roomFilter" aria-label="Filter rooms"><option value="all">All subjects</option><option>Technology</option><option>Exam prep</option><option>Creative</option><option>General</option></select></div><div class="rooms-grid all-rooms-grid" id="allRooms"></div></section>
+
+      <section class="view" id="view-focus"><div class="page-title-row"><div><div class="eyebrow">ONE THING AT A TIME</div><h1>Focus mode</h1><p class="subheading">Give your attention one place to land.</p></div></div><div class="focus-layout"><div class="focus-main card-surface"><div class="focus-room-label"><span class="live-dot"></span> YOUR PERSONAL SESSION</div><div class="timer-ring" id="timerRing"><div class="timer-inner"><span id="timerMode">FOCUS TIME</span><strong id="timerDisplay">25:00</strong><small id="timerHint">You’ve got this.</small></div></div><div class="timer-presets"><button class="preset active" data-minutes="25">Focus <b>25m</b></button><button class="preset" data-minutes="5">Short break <b>5m</b></button><button class="preset" data-minutes="15">Long break <b>15m</b></button></div><div class="timer-actions"><button class="primary-button" id="timerStart">▶ Start focus</button><button class="secondary-button" id="timerReset">↻ Reset</button></div><p class="timer-caption">Put your phone away. Take a deep breath. Begin.</p></div><aside class="focus-side"><div class="focus-side-card"><div class="side-card-icon">✦</div><h3>Today's intention</h3><p>What would make today feel productive?</p><textarea id="intentionInput" placeholder="e.g. Finish two DSA problems…" rows="3"></textarea><button class="secondary-button full-width" id="saveIntention">Save intention</button></div><div class="focus-side-card session-summary"><h3>Session summary</h3><div><span>Completed today</span><strong id="focusSessionCount">0 sessions</strong></div><div><span>Focused today</span><strong id="focusMinutesCount">0 min</strong></div><div><span>Daily goal</span><strong id="focusGoalCount">120 min</strong></div></div></aside></div></section>
+
+      <section class="view" id="view-progress"><div class="page-title-row"><div><div class="eyebrow">LOOK HOW FAR YOU'VE COME</div><h1>My progress</h1><p class="subheading">Every minute you invest in yourself matters.</p></div></div><div class="progress-overview"><div class="progress-big-card"><span class="stat-icon lavender">◷</span><p>Total focus time</p><strong><span id="progressHours">0</span><small> min</small></strong><span class="muted-small">Recorded on this device or synced from your cloud setup.</span></div><div class="progress-big-card"><span class="stat-icon peach">✓</span><p>Sessions completed</p><strong id="progressSessions">0</strong><span class="muted-small">One step closer to your goals.</span></div><div class="progress-big-card"><span class="stat-icon mint">♧</span><p>Daily target</p><strong><span id="progressGoal">120</span><small> min</small></strong><button class="text-button" id="editGoalProgress">Change daily goal →</button></div></div><div class="history-card"><div class="section-heading"><div><h2>Recent focus sessions</h2><p>Your latest completed sessions.</p></div><button class="text-button" id="clearHistory">Clear history</button></div><div id="historyList" class="history-list"></div></div><div class="cloud-explainer"><div class="cloud-explainer-icon">☁</div><div><h3>Cloud-powered study space</h3><p>This demo stores data locally by default. Connect your Firebase project to store rooms and sessions in Cloud Firestore and make data available across devices. See <b>README.md</b> for the 10-minute setup.</p></div><span class="cloud-badge" id="progressCloudBadge">LOCAL MODE</span></div></section>
+    </div>
+    <footer class="footer"><span>✦ study<span class="brand-light">sphere</span></span><span>Made for curious minds <b>♡</b></span><span>Cloud Computing Mini Project</span></footer>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="roomModal" aria-hidden="true"><form class="modal" id="createRoomForm"><button type="button" class="modal-close" data-close-modal aria-label="Close">×</button><div class="eyebrow">MAKE A LITTLE SPACE</div><h2>Create a study room</h2><p>Set the vibe. Your people will find you.</p><label>Room name<input id="newRoomName" required maxlength="45" placeholder="e.g. Night Owl Coders"></label><label>Subject<select id="newRoomCategory"><option>Technology</option><option>Exam prep</option><option>Creative</option><option>General</option></select></label><label>Room vibe<select id="newRoomVibe"><option value="Quiet focus">Quiet focus</option><option value="Study buddies">Study buddies</option><option value="Accountability">Accountability</option></select></label><button class="primary-button full-width" type="submit">Create my room ✦</button></form></div>
+<div class="modal-backdrop" id="nameModal" aria-hidden="true"><form class="modal" id="nameForm"><button type="button" class="modal-close" data-close-modal aria-label="Close">×</button><div class="eyebrow">MAKE YOURSELF AT HOME</div><h2>What should we call you?</h2><p>Your name will appear on your study dashboard.</p><label>Your name<input id="studentNameInput" required maxlength="30" placeholder="e.g. Alex"></label><button class="primary-button full-width" type="submit">Save my name</button></form></div>
+<div class="modal-backdrop" id="roomDetailModal" aria-hidden="true"><div class="modal room-detail-modal"><button type="button" class="modal-close" data-close-modal aria-label="Close">×</button><div id="roomDetailContent"></div></div></div>
+<div class="toast" id="toast" role="status"></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
